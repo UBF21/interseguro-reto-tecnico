@@ -1,2 +1,6 @@
 .env
 .impeccable/
+
+# Claude Code -- nada de esto se sube al repo del reto.
+.claude/
+CLAUDE.md
