@@ -1,0 +1,427 @@
+<mxfile host="app.diagrams.net" agent="5.0" pages="2">
+  <diagram id="reto3-arquitectura" name="1 - Arquitectura (HLD)">
+    <mxGraphModel dx="644" dy="329" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2140" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="h_title" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#4a86e8;strokeColor=none;fontColor=#ffffff;fontSize=16;fontStyle=1;align=left;spacingLeft=20;verticalAlign=middle;" value="Préstamos de Renta Particular — Arquitectura Propuesta (TO-BE)" vertex="1">
+          <mxGeometry height="50" width="2120" as="geometry" />
+        </mxCell>
+        <mxCell id="band_a" parent="1" style="rounded=1;arcSize=2;html=1;whiteSpace=wrap;fillColor=#f7f9fc;strokeColor=#dde3ea;align=left;verticalAlign=top;spacingLeft=12;spacingTop=2;fontSize=11;fontStyle=1;fontColor=#64748b;movable=1;" value="① Persistencia y notificación" vertex="1">
+          <mxGeometry height="190" width="2080" x="20" y="65" as="geometry" />
+        </mxCell>
+        <mxCell id="band_b" parent="1" style="rounded=1;arcSize=2;html=1;whiteSpace=wrap;fillColor=#f2f6fc;strokeColor=#dde3ea;align=left;verticalAlign=top;spacingLeft=12;spacingTop=2;fontSize=11;fontStyle=1;fontColor=#64748b;movable=1;" value="② Flujo principal de desembolso (asíncrono)" vertex="1">
+          <mxGeometry height="200" width="2080" x="20" y="265" as="geometry" />
+        </mxCell>
+        <mxCell id="band_c" parent="1" style="rounded=1;arcSize=2;html=1;whiteSpace=wrap;fillColor=#fdf9f1;strokeColor=#dde3ea;align=left;verticalAlign=top;spacingLeft=12;spacingTop=2;fontSize=11;fontStyle=1;fontColor=#64748b;movable=1;" value="③ Reconciliación contra el legacy" vertex="1">
+          <mxGeometry height="230" width="2080" x="20" y="475" as="geometry" />
+        </mxCell>
+        <mxCell id="band_d" parent="1" style="rounded=1;arcSize=2;html=1;whiteSpace=wrap;fillColor=#f7f9fc;strokeColor=#dde3ea;align=left;verticalAlign=top;spacingLeft=12;spacingTop=2;fontSize=11;fontStyle=1;fontColor=#64748b;movable=1;" value="④ Servicios transversales" vertex="1">
+          <mxGeometry height="200" width="2080" x="20" y="715" as="geometry" />
+        </mxCell>
+        <mxCell id="zone_onprem" parent="1" style="rounded=1;arcSize=4;html=1;whiteSpace=wrap;fillColor=none;strokeColor=#b85450;dashed=1;dashPattern=8 4;align=right;verticalAlign=top;spacingRight=10;spacingTop=2;fontSize=10;fontStyle=2;fontColor=#b85450;" value="On-premise / legacy" vertex="1">
+          <mxGeometry height="170" width="520" x="1570" y="285" as="geometry" />
+        </mxCell>
+        <mxCell id="h_actor" parent="1" style="shape=actor;whiteSpace=wrap;html=1;fillColor=#6c8ebf;strokeColor=#3f5a80;fontColor=#000000;verticalLabelPosition=bottom;verticalAlign=top;fontSize=11;" value="Cliente" vertex="1">
+          <mxGeometry height="60" width="50" x="40" y="335" as="geometry" />
+        </mxCell>
+        <mxCell id="h_proxy_bg" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=11;fontColor=#1f2937;align=left;verticalAlign=middle;spacingLeft=52;spacingRight=6;shadow=0;strokeWidth=1.5;strokeColor=#4472c4;" value="&lt;b&gt;Proxy / API GW&lt;/b&gt;" vertex="1">
+          <mxGeometry height="90" width="150" x="130" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="h_proxy_icon" parent="1" style="sketch=0;html=1;aspect=fixed;strokeColor=none;shadow=0;fillColor=#4285F4;shape=mxgraph.gcp2.cloud_load_balancing;" value="" vertex="1">
+          <mxGeometry height="34" width="34" x="142" y="348" as="geometry" />
+        </mxCell>
+        <mxCell id="h_bff_bg" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=11;fontColor=#1f2937;align=left;verticalAlign=middle;spacingLeft=52;spacingRight=6;shadow=0;strokeWidth=1.5;strokeColor=#4472c4;" value="&lt;font style=&quot;font-size:9px&quot; color=&quot;#6b7280&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;service&amp;gt;&amp;gt;&lt;/i&gt;&lt;/font&gt;&lt;br&gt;&lt;b&gt;zona-segura-backend&lt;/b&gt;&lt;br&gt;&lt;font style=&#39;font-size:9px&#39; color=&#39;#888888&#39;&gt;Cloud Run&lt;br&gt;&lt;font style=&quot;font-size:8.5px&quot; color=&quot;#2e8b57&quot;&gt;valida único activo (idx) → 202 + requestId&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="190" x="380" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="h_bff_icon" parent="1" style="sketch=0;html=1;aspect=fixed;strokeColor=none;shadow=0;fillColor=#4285F4;shape=mxgraph.gcp2.cloud_run;" value="" vertex="1">
+          <mxGeometry height="32" width="32" x="392" y="349" as="geometry" />
+        </mxCell>
+        <mxCell id="h_queue_bg" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=11;fontColor=#1f2937;align=left;verticalAlign=middle;spacingLeft=52;spacingRight=6;shadow=0;strokeWidth=1.5;strokeColor=#8e44ad;" value="&lt;font style=&quot;font-size:9px&quot; color=&quot;#6b7280&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;queue&amp;gt;&amp;gt;&lt;/i&gt;&lt;/font&gt;&lt;br&gt;&lt;b&gt;cola-mensajes&lt;/b&gt;&lt;br&gt;&lt;font style=&#39;font-size:9px&#39; color=&#39;#888888&#39;&gt;Pub/Sub&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="190" x="670" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="h_queue_icon" parent="1" style="sketch=0;html=1;aspect=fixed;strokeColor=none;shadow=0;fillColor=#4285F4;shape=mxgraph.gcp2.cloud_pubsub;" value="" vertex="1">
+          <mxGeometry height="32" width="32" x="682" y="349" as="geometry" />
+        </mxCell>
+        <mxCell id="h_worker_bg" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=11;fontColor=#1f2937;align=left;verticalAlign=middle;spacingLeft=52;spacingRight=6;shadow=0;strokeWidth=1.5;strokeColor=#4472c4;" value="&lt;font style=&quot;font-size:9px&quot; color=&quot;#6b7280&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;service&amp;gt;&amp;gt;&lt;/i&gt;&lt;/font&gt;&lt;br&gt;&lt;b&gt;worker-consumer&lt;/b&gt;&lt;br&gt;&lt;font style=&#39;font-size:9px&#39; color=&#39;#888888&#39;&gt;Cloud Run Jobs&lt;/font&gt;&lt;br&gt;&lt;font style=&#39;font-size:8px&#39; color=&#39;#888888&#39;&gt;intento único, sin retry&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="190" x="960" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="h_worker_icon" parent="1" style="sketch=0;html=1;aspect=fixed;strokeColor=none;shadow=0;fillColor=#4285F4;shape=mxgraph.gcp2.cloud_run;" value="" vertex="1">
+          <mxGeometry height="32" width="32" x="972" y="349" as="geometry" />
+        </mxCell>
+        <mxCell id="h_cb" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fontSize=11;fontColor=#1f2937;align=center;verticalAlign=middle;spacing=6;strokeWidth=1.5;spacing=6;dashed=1;fillColor=#fff7ec;strokeColor=#d79b00;" value="&lt;font style=&quot;font-size:9px&quot; color=&quot;#6b7280&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;/i&gt;&lt;/font&gt;&lt;br&gt;&lt;b&gt;circuit-breaker&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot; color=&quot;#8a5a00&quot;&gt;protege de fallos en cascada&lt;/font&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot; color=&quot;#8a5a00&quot;&gt;NO reintenta si es ambiguo (502/timeout)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="190" x="1250" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="h_proxy_inari" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fontSize=11;fontColor=#1f2937;align=center;verticalAlign=middle;strokeWidth=1.5;spacing=6;fillColor=#ffffff;strokeColor=#b85450;" value="&lt;font style=&quot;font-size:9px&quot; color=&quot;#6b7280&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;on-premise&amp;gt;&amp;gt;&lt;/i&gt;&lt;/font&gt;&lt;br&gt;&lt;b&gt;proxy-inari&lt;/b&gt;&lt;br&gt;&lt;font style=&#39;font-size:9px&#39; color=&#39;#888888&#39;&gt;.NET / IIS&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="190" x="1590" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="h_vmware" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fontSize=11;fontColor=#1f2937;align=center;verticalAlign=middle;strokeWidth=1.5;spacing=6;fillColor=#ffffff;strokeColor=#b85450;" value="&lt;font style=&quot;font-size:9px&quot; color=&quot;#6b7280&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;legacy&amp;gt;&amp;gt;&lt;/i&gt;&lt;/font&gt;&lt;br&gt;&lt;b&gt;admwr&lt;/b&gt;&lt;br&gt;&lt;font style=&#39;font-size:9px&#39; color=&#39;#888888&#39;&gt;VMWARE / .net forms&lt;/font&gt;&lt;br&gt;&lt;font style=&#39;font-size:8px&#39; color=&#39;#888888&#39;&gt;sin idempotencia nativa&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="190" x="1880" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="h_db_bg" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=11;fontColor=#1f2937;align=left;verticalAlign=middle;spacingLeft=52;spacingRight=6;shadow=0;strokeWidth=1.5;strokeColor=#2e8b57;" value="&lt;font style=&quot;font-size:9px&quot; color=&quot;#6b7280&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;database&amp;gt;&amp;gt;&lt;/i&gt;&lt;/font&gt;&lt;br&gt;&lt;b&gt;solicitudes-db&lt;/b&gt;&lt;br&gt;&lt;font style=&#39;font-size:9px&#39; color=&#39;#888888&#39;&gt;Cloud SQL&lt;/font&gt;&lt;br&gt;&lt;font style=&#39;font-size:8px&#39; color=&#39;#888888&#39;&gt;unique(polizaId) WHERE activo&lt;/font&gt;" vertex="1">
+          <mxGeometry height="120" width="260" x="680" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="h_db_icon" parent="1" style="sketch=0;html=1;aspect=fixed;strokeColor=none;shadow=0;fillColor=#4285F4;shape=mxgraph.gcp2.cloud_sql;" value="" vertex="1">
+          <mxGeometry height="32" width="32" x="692" y="134" as="geometry" />
+        </mxCell>
+        <mxCell id="h_reconciler_bg" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=11;fontColor=#1f2937;align=left;verticalAlign=middle;spacingLeft=52;spacingRight=6;shadow=0;strokeWidth=1.5;strokeColor=#4472c4;" value="&lt;font style=&quot;font-size:9px&quot; color=&quot;#6b7280&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;service&amp;gt;&amp;gt;&lt;/i&gt;&lt;/font&gt;&lt;br&gt;&lt;b&gt;reconciliation-worker&lt;/b&gt;&lt;br&gt;&lt;font style=&#39;font-size:9px&#39; color=&#39;#888888&#39;&gt;Cloud Scheduler + Run&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="210" x="690" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="h_reconciler_icon" parent="1" style="sketch=0;html=1;aspect=fixed;strokeColor=none;shadow=0;fillColor=#4285F4;shape=mxgraph.gcp2.cloud_scheduler;" value="" vertex="1">
+          <mxGeometry height="32" width="32" x="702" y="549" as="geometry" />
+        </mxCell>
+        <mxCell id="h_status_query_bg" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=11;fontColor=#1f2937;align=left;verticalAlign=middle;spacingLeft=52;spacingRight=6;shadow=0;strokeWidth=1.5;strokeColor=#4472c4;" value="&lt;font style=&quot;font-size:9px&quot; color=&quot;#6b7280&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;service&amp;gt;&amp;gt;&lt;/i&gt;&lt;/font&gt;&lt;br&gt;&lt;b&gt;reconciliation-api&lt;/b&gt;&lt;br&gt;&lt;font style=&#39;font-size:9px&#39; color=&#39;#888888&#39;&gt;consulta status/batch INARI&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="190" x="1590" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="h_status_query_icon" parent="1" style="sketch=0;html=1;aspect=fixed;strokeColor=none;shadow=0;fillColor=#4285F4;shape=mxgraph.gcp2.cloud_run;" value="" vertex="1">
+          <mxGeometry height="32" width="32" x="1602" y="549" as="geometry" />
+        </mxCell>
+        <mxCell id="h_dlq_bg" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=11;fontColor=#1f2937;align=left;verticalAlign=middle;spacingLeft=52;spacingRight=6;shadow=0;strokeWidth=1.5;strokeColor=#8e44ad;" value="&lt;font style=&quot;font-size:9px&quot; color=&quot;#6b7280&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;queue&amp;gt;&amp;gt;&lt;/i&gt;&lt;/font&gt;&lt;br&gt;&lt;b&gt;dead-letter&lt;/b&gt;&lt;br&gt;&lt;font style=&#39;font-size:9px&#39; color=&#39;#888888&#39;&gt;no confirmable tras N ciclos&lt;br&gt;&lt;font style=&quot;font-size:8.5px&quot; color=&quot;#8e44ad&quot;&gt;→ alerta a Operaciones&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="190" x="1880" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="h_dlq_icon" parent="1" style="sketch=0;html=1;aspect=fixed;strokeColor=none;shadow=0;fillColor=#4285F4;shape=mxgraph.gcp2.cloud_pubsub;" value="" vertex="1">
+          <mxGeometry height="32" width="32" x="1892" y="549" as="geometry" />
+        </mxCell>
+        <mxCell id="h_insight" parent="1" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=14;fillColor=#fff7ec;strokeColor=#d79b00;fontSize=11;fontColor=#8a5a00;" value="💡 &lt;b&gt;Insight clave:&lt;/b&gt; un 502 del proxy no prueba que INARI falló.&lt;br&gt;&lt;br&gt;Nunca se reintenta a ciegas — el estado ambiguo se reconcilia contra la fuente real (status API / batch de INARI) antes de confirmar éxito o reintentar.&lt;br&gt;&lt;br&gt;&lt;b&gt;Decisión de reconciliación:&lt;/b&gt; confirmado→SUCCESS · no ejecutado→reintento seguro · sin confirmar tras N intentos→DLQ + alerta a Operaciones." vertex="1">
+          <mxGeometry height="170" width="460" x="130" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="h_vault_bg" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=11;fontColor=#1f2937;align=left;verticalAlign=middle;spacingLeft=52;spacingRight=6;shadow=0;strokeWidth=1.5;strokeColor=#bf9000;" value="&lt;font style=&quot;font-size:9px&quot; color=&quot;#6b7280&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;secret&amp;gt;&amp;gt;&lt;/i&gt;&lt;/font&gt;&lt;br&gt;&lt;b&gt;vault&lt;/b&gt;&lt;br&gt;&lt;font style=&#39;font-size:9px&#39; color=&#39;#888888&#39;&gt;Secret Manager&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="200" x="130" y="740" as="geometry" />
+        </mxCell>
+        <mxCell id="h_vault_icon" parent="1" style="sketch=0;html=1;aspect=fixed;strokeColor=none;shadow=0;fillColor=#4285F4;shape=mxgraph.gcp2.key_management_service;" value="" vertex="1">
+          <mxGeometry height="32" width="32" x="142" y="764" as="geometry" />
+        </mxCell>
+        <mxCell id="h_vault_note" parent="1" style="text;html=1;fontSize=9;fontColor=#6b7280;align=left;verticalAlign=middle;whiteSpace=wrap;" value="↳ todos los servicios de la fila 1-3 leen sus secretos de acá al arrancar" vertex="1">
+          <mxGeometry height="20" width="440" x="130" y="826" as="geometry" />
+        </mxCell>
+        <mxCell id="h_notifier_bg" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=11;fontColor=#1f2937;align=left;verticalAlign=middle;spacingLeft=52;spacingRight=6;shadow=0;strokeWidth=1.5;strokeColor=#4472c4;" value="&lt;font style=&quot;font-size:9px&quot; color=&quot;#6b7280&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;service&amp;gt;&amp;gt;&lt;/i&gt;&lt;/font&gt;&lt;br&gt;&lt;b&gt;notifier-service&lt;/b&gt;&lt;br&gt;&lt;font style=&#39;font-size:9px&#39; color=&#39;#888888&#39;&gt;polling / WS-SSE&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="200" x="130" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="h_notifier_icon" parent="1" style="sketch=0;html=1;aspect=fixed;strokeColor=none;shadow=0;fillColor=#4285F4;shape=mxgraph.gcp2.cloud_run;" value="" vertex="1">
+          <mxGeometry height="32" width="32" x="142" y="134" as="geometry" />
+        </mxCell>
+        <mxCell id="h_notifier_note" parent="1" style="text;html=1;fontSize=9;fontColor=#6b7280;align=left;verticalAlign=middle;whiteSpace=wrap;" value="↳ responde al cliente vía el mismo Proxy / API GW (ver página 2, pasos 19-20)" vertex="1">
+          <mxGeometry height="20" width="440" x="130" y="194" as="geometry" />
+        </mxCell>
+        <mxCell id="h_obs_bg" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ffffff;fontSize=11;fontColor=#1f2937;align=left;verticalAlign=middle;spacingLeft=52;spacingRight=6;shadow=0;strokeWidth=1.5;strokeColor=#bf9000;" value="&lt;font style=&quot;font-size:9px&quot; color=&quot;#6b7280&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;monitoring&amp;gt;&amp;gt;&lt;/i&gt;&lt;/font&gt;&lt;br&gt;&lt;b&gt;observabilidad&lt;/b&gt;&lt;br&gt;&lt;font style=&#39;font-size:9px&#39; color=&#39;#888888&#39;&gt;Cloud Monitoring&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="210" x="620" y="740" as="geometry" />
+        </mxCell>
+        <mxCell id="h_obs_icon" parent="1" style="sketch=0;html=1;aspect=fixed;strokeColor=none;shadow=0;fillColor=#4285F4;shape=mxgraph.gcp2.hexIcon;prIcon=stackdriver;" value="" vertex="1">
+          <mxGeometry height="40" width="40" x="628" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="h_obs_note" parent="1" style="text;html=1;fontSize=9;fontColor=#6b7280;align=left;verticalAlign=middle;whiteSpace=wrap;" value="↳ worker-consumer y dead-letter envían métricas/alertas acá" vertex="1">
+          <mxGeometry height="20" width="440" x="620" y="826" as="geometry" />
+        </mxCell>
+        <mxCell id="h_e1" edge="1" parent="1" source="h_actor" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=14;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=7;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.4;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#4472c4;fontColor=#1f2937;" target="h_proxy_bg" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h_e2" edge="1" parent="1" source="h_proxy_bg" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=14;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=7;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.4;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#4472c4;fontColor=#4472c4;" target="h_bff_bg" value="Solicitar&lt;br&gt;desembolso">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h_e3" edge="1" parent="1" source="h_bff_bg" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=14;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=7;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.4;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#4472c4;fontColor=#4472c4;" target="h_queue_bg" value="Publicar&lt;br&gt;evento">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h_e4" edge="1" parent="1" source="h_queue_bg" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=14;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=7;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.4;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#4472c4;fontColor=#4472c4;" target="h_worker_bg" value="Consumir&lt;br&gt;evento">
+          <mxGeometry relative="1" x="0.4" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h_e5" edge="1" parent="1" source="h_worker_bg" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=14;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=7;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.4;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#4472c4;fontColor=#4472c4;" target="h_cb" value="Invocar&lt;br&gt;(intento único)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h_e6" edge="1" parent="1" source="h_cb" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=14;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=7;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.4;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#d79b00;fontColor=#8a5a00;" target="h_proxy_inari" value="Ejecutar desembolso&lt;br&gt;(la respuesta puede&lt;br&gt;ser ambigua)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h_e7" edge="1" parent="1" source="h_proxy_inari" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=14;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=7;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.4;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#b85450;fontColor=#b85450;" target="h_vmware" value="Forward">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h_e8" edge="1" parent="1" source="h_bff_bg" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=14;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=7;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.4;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.23076923076923078;entryY=1;entryDx=0;entryDy=0;strokeColor=#2e8b57;fontColor=#2e8b57;" target="h_db_bg" value="Registrar solicitud">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="475" y="260" />
+              <mxPoint x="740" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h_e9" edge="1" parent="1" source="h_worker_bg" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=14;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=7;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.4;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;strokeColor=#2e8b57;fontColor=#2e8b57;" target="h_db_bg" value="Actualizar estado">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1055" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h_e10" edge="1" parent="1" source="h_cb" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=14;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=7;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.4;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;strokeColor=#d79b00;fontColor=#8a5a00;dashed=1;dashPattern=6 4;" target="h_db_bg" value="Confirmar SUCCESS /&lt;br&gt;marcar EN_VERIFICACION">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1345" y="120" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h_e11" edge="1" parent="1" source="h_reconciler_bg" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=14;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=7;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.4;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#d79b00;fontColor=#8a5a00;" target="h_status_query_bg" value="Programar verificación">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h_e12" edge="1" parent="1" source="h_status_query_bg" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=14;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=7;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.4;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.82;entryY=1;entryDx=0;entryDy=0;strokeColor=#d79b00;fontColor=#8a5a00;" target="h_proxy_inari" value="Consultar estado real&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;(solo lectura — no pasa por el circuit breaker)&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1745.8" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h_e13" edge="1" parent="1" source="h_reconciler_bg" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=14;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=7;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.4;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#b85450;fontColor=#b85450;dashed=1;dashPattern=6 4;" target="h_dlq_bg" value="Enviar a DLQ&lt;br&gt;(tras N intentos)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="900" y="580" />
+              <mxPoint x="920" y="580" />
+              <mxPoint x="920" y="630" />
+              <mxPoint x="870" y="630" />
+              <mxPoint x="870" y="675" />
+              <mxPoint x="1860" y="675" />
+              <mxPoint x="1860" y="565" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h_e15" edge="1" parent="1" source="h_reconciler_bg" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=14;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=7;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.4;exitX=0.35714285714285715;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeColor=#2d6a2d;fontColor=#2d6a2d;" target="h_queue_bg" value="Reintentar (seguro)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h_e16" edge="1" parent="1" source="h_db_bg" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=14;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=7;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.4;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#2e8b57;fontColor=#2e8b57;" target="h_notifier_bg" value="Notificar cambio de estado">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h_legend" parent="1" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#cbd5e1;fontSize=11;fontColor=#1f2937;spacing=12;" value="&lt;b style=&quot;font-size:12px&quot;&gt;Criterios de evaluación cubiertos&lt;/b&gt;&lt;br&gt;&lt;br&gt;• &lt;b&gt;Escalabilidad&lt;/b&gt;: cola + workers horizontales según profundidad de cola&lt;br&gt;• &lt;b&gt;Resiliencia y reintentos&lt;/b&gt;: circuit breaker + reconciliación contra la fuente real (nunca retry ciego) + DLQ&lt;br&gt;• &lt;b&gt;Control de concurrencia&lt;/b&gt;: idempotency key + índice único (polizaId + estado activo) en BD&lt;br&gt;• &lt;b&gt;Seguridad&lt;/b&gt;: JWT/OAuth en Zona Segura, red privada hacia INARI, secretos en Vault&lt;br&gt;• &lt;b&gt;Costo&lt;/b&gt;: cola managed de capa gratuita, no se reescribe INARI/admwr&lt;br&gt;&lt;br&gt;&lt;font color=&quot;#6b7280&quot;&gt;&lt;b&gt;Convención de flechas:&lt;/b&gt; &lt;font color=&quot;#4472c4&quot;&gt;azul&lt;/font&gt; flujo principal · &lt;font color=&quot;#2e8b57&quot;&gt;verde&lt;/font&gt; persistencia · &lt;font color=&quot;#d79b00&quot;&gt;naranja&lt;/font&gt; circuit breaker / reconciliación · &lt;font color=&quot;#b85450&quot;&gt;rojo&lt;/font&gt; legacy / DLQ · punteada = camino de compensación&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;i&gt;Ver página 2 (&quot;Flujo Detallado&quot;) para la secuencia paso a paso de una request.&lt;/i&gt;" vertex="1">
+          <mxGeometry height="170" width="910" x="1160" y="730" as="geometry" />
+        </mxCell>
+        <mxCell id="h_e14" edge="1" parent="1" source="h_reconciler_bg" style="edgeStyle=orthogonalEdgeStyle;rounded=1;arcSize=14;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=7;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.4;exitX=0.9047619047619048;exitY=0;exitDx=0;exitDy=0;entryX=0.7692307692307693;entryY=1;entryDx=0;entryDy=0;strokeColor=#d79b00;fontColor=#8a5a00;dashed=1;dashPattern=6 4;jumpStyle=arc;jumpSize=12;" target="h_db_bg" value="Conciliar estado">
+          <mxGeometry relative="1" x="-0.6" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="reto3-secuencia" name="2 - Flujo Detallado (Secuencia)">
+    <mxGraphModel dx="1750" dy="1300" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1750" pageHeight="1300" math="0" shadow="0">
+      <root>
+        <mxCell id="0b" />
+        <mxCell id="1b" parent="0b" />
+        <!-- ============ AS-IS ============ -->
+        <mxCell id="t_asis" value="AS-IS — Problema actual (flujo síncrono, sin idempotencia)" style="text;html=1;fontSize=15;fontStyle=1;fontColor=#b85450;align=left;" vertex="1" parent="1b">
+          <mxGeometry x="40" y="40" width="700" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="as_cliente" value="Cliente&lt;br&gt;&lt;i&gt;espera en pantalla&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;" vertex="1" parent="1b">
+          <mxGeometry x="40" y="100" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="as_backend" value="Backend Node&lt;br&gt;&lt;i&gt;(llamada síncrona)&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;" vertex="1" parent="1b">
+          <mxGeometry x="260" y="100" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="as_proxy" value="Proxy INARI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1b">
+          <mxGeometry x="500" y="100" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="as_vmware" value="VMWARE admwr" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1b">
+          <mxGeometry x="720" y="100" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="as_note" value="⚠ El 502 del proxy no es una señal confiable: admwr sigue procesando en&lt;br&gt;segundo plano y muchas veces desembolsa igual. El cliente ve el error,&lt;br&gt;reintenta a mano, y el sistema termina desembolsando el mismo&lt;br&gt;préstamo dos veces." style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#fff2f2;strokeColor=#b85450;fontSize=12;fontColor=#b85450;" vertex="1" parent="1b">
+          <mxGeometry x="940" y="90" width="650" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="ae1" value="espera síncrona (bloqueante)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;" edge="1" parent="1b" source="as_cliente" target="as_backend">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ae2" value="forward" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;" edge="1" parent="1b" source="as_backend" target="as_proxy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ae3" value="forward" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;" edge="1" parent="1b" source="as_proxy" target="as_vmware">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ae4" value="ejecuta OK (a veces) pero tarde" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;dashed=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1b" source="as_vmware" target="as_proxy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ae5" value="502 Bad Gateway (timeout)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;dashed=1;strokeColor=#b85450;fontColor=#b85450;exitX=0;exitY=0.7;entryX=1;entryY=0.7;" edge="1" parent="1b" source="as_proxy" target="as_backend">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ae6" value="error visible → reintento manual → duplica desembolso" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;dashed=1;strokeColor=#b85450;fontColor=#b85450;exitX=0;exitY=0.7;entryX=1;entryY=0.7;" edge="1" parent="1b" source="as_backend" target="as_cliente">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- ============ TO-BE (secuencia numerada) ============ -->
+        <mxCell id="t_tobe" value="TO-BE — Secuencia detallada de una request (referencia: ver página 1 para la arquitectura)" style="text;html=1;fontSize=15;fontStyle=1;fontColor=#2d6a2d;align=left;" vertex="1" parent="1b">
+          <mxGeometry x="40" y="250" width="1000" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_cliente" value="Zona Segura (Cliente)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;verticalAlign=top;fontSize=13;fontStyle=1;align=center;" vertex="1" parent="1b">
+          <mxGeometry x="40" y="290" width="240" height="760" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_api" value="API / Edge (BFF + estado)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;verticalAlign=top;fontSize=13;fontStyle=1;align=center;" vertex="1" parent="1b">
+          <mxGeometry x="320" y="290" width="300" height="760" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_async" value="Async / Mensajería" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;verticalAlign=top;fontSize=13;fontStyle=1;align=center;" vertex="1" parent="1b">
+          <mxGeometry x="660" y="290" width="300" height="760" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_res" value="Resiliencia / Reconciliación" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;verticalAlign=top;fontSize=13;fontStyle=1;align=center;" vertex="1" parent="1b">
+          <mxGeometry x="1000" y="290" width="320" height="760" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_legacy" value="Legacy — INARI / VMWARE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;verticalAlign=top;fontSize=13;fontStyle=1;align=center;" vertex="1" parent="1b">
+          <mxGeometry x="1360" y="290" width="280" height="760" as="geometry" />
+        </mxCell>
+        <mxCell id="n_cliente" value="Cliente&lt;br&gt;(Zona Segura)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1b">
+          <mxGeometry x="70" y="630" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="n_bff" value="Backend Node (BFF)&lt;br&gt;API Desembolsos&lt;br&gt;&lt;i&gt;responde 202 inmediato&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1b">
+          <mxGeometry x="350" y="350" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="n_db" value="PostgreSQL&lt;br&gt;solicitudes_desembolso&lt;br&gt;&lt;i&gt;PENDING → PROCESSING →&lt;br&gt;EN_VERIFICACION → SUCCESS/FAILED&lt;/i&gt;&lt;br&gt;&lt;b&gt;unique(polizaId) WHERE activo&lt;/b&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1b">
+          <mxGeometry x="350" y="490" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="n_notifier" value="Notifier Service&lt;br&gt;(poll GET /estado o push WS/SSE)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1b">
+          <mxGeometry x="350" y="660" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="n_vault" value="Vault / Secrets Manager" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="1b">
+          <mxGeometry x="350" y="950" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="n_queue" value="Cola de Mensajes&lt;br&gt;(SQS / Pub-Sub / RabbitMQ)" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#ffffff;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1b">
+          <mxGeometry x="690" y="350" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="n_worker" value="Worker Consumer&lt;br&gt;&lt;i&gt;intento único por mensaje&lt;br&gt;(no retry automático)&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1b">
+          <mxGeometry x="690" y="480" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="n_reconciler" value="Reconciliation Worker&lt;br&gt;(cron cada N min, sobre&lt;br&gt;registros EN_VERIFICACION)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1b">
+          <mxGeometry x="690" y="660" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="n_cb" value="Circuit Breaker&lt;br&gt;(abre tras fallos consecutivos)&lt;br&gt;&lt;i&gt;NO reintenta ciego: admwr&lt;br&gt;no es idempotente&lt;/i&gt;" style="rounded=1;dashed=1;whiteSpace=wrap;html=1;fillColor=#fff7ec;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1b">
+          <mxGeometry x="1030" y="350" width="260" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="n_status_query" value="Consulta estado real&lt;br&gt;(status API / batch report INARI)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff7ec;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1b">
+          <mxGeometry x="1030" y="500" width="260" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="n_dlq" value="Dead Letter Queue&lt;br&gt;&lt;i&gt;no confirmable tras N reconciliaciones&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1b">
+          <mxGeometry x="1030" y="660" width="260" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="n_obs" value="Observabilidad&lt;br&gt;(logs, métricas, alertas a Operaciones)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1b">
+          <mxGeometry x="1030" y="790" width="260" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="n_proxy" value="Proxy INARI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1b">
+          <mxGeometry x="1390" y="410" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="n_vmware" value="VMWARE admwr&lt;br&gt;(legacy, sin idempotencia nativa)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1b">
+          <mxGeometry x="1390" y="570" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="1. POST /desembolsos&#xa;{polizaId, monto}" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=1;exitY=0.25;entryX=0;entryY=0.5;" edge="1" parent="1b" source="n_cliente" target="n_bff">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="2. valida idempotencia +&#xa;crea registro PENDING" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1b" source="n_bff" target="n_db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="3. 202 Accepted&#xa;{requestId}" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;dashed=1;exitX=0;exitY=0.8;entryX=1;entryY=0.5;" edge="1" parent="1b" source="n_bff" target="n_cliente">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="4. publica&#xa;DesembolsoSolicitado" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=1;exitY=0.3;entryX=0;entryY=0.5;" edge="1" parent="1b" source="n_bff" target="n_queue">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="5. consume" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;" edge="1" parent="1b" source="n_queue" target="n_worker">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="6. update PROCESSING" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0;exitY=0.3;entryX=1;entryY=0.4;" edge="1" parent="1b" source="n_worker" target="n_db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" value="7. invoca (intento único)&#xa;c/ idempotencyKey" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=1;exitY=0.3;entryX=0;entryY=0.5;" edge="1" parent="1b" source="n_worker" target="n_cb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" value="8. forward si&#xa;circuito cerrado" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=1;exitY=0.3;entryX=0;entryY=0.4;" edge="1" parent="1b" source="n_cb" target="n_proxy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" value="9. forward" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;" edge="1" parent="1b" source="n_proxy" target="n_vmware">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" value="10. resultado real&#xa;(puede tardar)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;dashed=1;strokeColor=#999999;fontColor=#999999;exitX=0.7;exitY=0;entryX=0.7;entryY=1;" edge="1" parent="1b" source="n_vmware" target="n_proxy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" value="11. 200 OK  ó  502&#xa;(ambiguo: timeout/lentitud)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;dashed=1;strokeColor=#d79b00;fontColor=#8a5a00;exitX=0;exitY=0.7;entryX=1;entryY=0.7;" edge="1" parent="1b" source="n_proxy" target="n_cb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" value="12. 200→SUCCESS&#xa;502→EN_VERIFICACION" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;dashed=1;strokeColor=#d79b00;fontColor=#8a5a00;exitX=0.3;exitY=1;entryX=0.3;entryY=1;" edge="1" parent="1b" source="n_cb" target="n_db">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1080" y="1060" />
+              <mxPoint x="470" y="1060" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e13" value="13. cada N min, revisa&#xa;EN_VERIFICACION" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;strokeColor=#d79b00;fontColor=#8a5a00;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1b" source="n_reconciler" target="n_status_query">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" value="14. consulta estado real&#xa;(status API / batch)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;strokeColor=#d79b00;fontColor=#8a5a00;exitX=1;exitY=0.2;entryX=0;entryY=0.8;" edge="1" parent="1b" source="n_status_query" target="n_proxy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" value="15. confirmado ejecutado&#xa;/ no ejecutado" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;dashed=1;strokeColor=#999999;fontColor=#999999;exitX=0.85;exitY=1;entryX=1;entryY=0.4;" edge="1" parent="1b" source="n_proxy" target="n_status_query">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" value="16. confirmado→SUCCESS&#xa;no ejecutado→FAILED_RETRYABLE" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;dashed=1;strokeColor=#d79b00;fontColor=#8a5a00;exitX=0;exitY=0.3;entryX=0.5;entryY=1;" edge="1" parent="1b" source="n_reconciler" target="n_db">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="705" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e17" value="17. si no ejecutado,&#xa;re-publica (retry seguro)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;strokeColor=#2d6a2d;fontColor=#2d6a2d;exitX=1;exitY=0.1;entryX=1;entryY=0.9;" edge="1" parent="1b" source="n_reconciler" target="n_queue">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="975" y="695" />
+              <mxPoint x="975" y="422" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e18" value="18. tras N reconciliaciones&#xa;sin confirmar" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;dashed=1;strokeColor=#b85450;fontColor=#b85450;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1b" source="n_reconciler" target="n_dlq">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e19" value="19. cambio de estado" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;" edge="1" parent="1b" source="n_db" target="n_notifier">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e20" value="20. push WS/SSE ó&#xa;responde poll /estado" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;dashed=1;exitX=0;exitY=0.5;entryX=1;entryY=0.85;" edge="1" parent="1b" source="n_notifier" target="n_cliente">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e21" value="logs / métricas" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;dashed=1;strokeColor=#999999;fontColor=#999999;exitX=1;exitY=0.9;entryX=0;entryY=0.5;" edge="1" parent="1b" source="n_worker" target="n_obs">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="975" y="825" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e22" value="alerta a Operaciones" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;dashed=1;strokeColor=#b85450;fontColor=#b85450;" edge="1" parent="1b" source="n_dlq" target="n_obs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e23" value="secretos" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;dashed=1;strokeColor=#9673a6;fontColor=#9673a6;exitX=0;exitY=0.5;entryX=0;entryY=0.9;" edge="1" parent="1b" source="n_vault" target="n_bff">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="300" y="980" />
+              <mxPoint x="300" y="431" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e24" value="credenciales INARI" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;dashed=1;strokeColor=#9673a6;fontColor=#9673a6;exitX=1;exitY=0.5;entryX=0;entryY=0.9;" edge="1" parent="1b" source="n_vault" target="n_worker">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="640" y="980" />
+              <mxPoint x="640" y="552" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="n_legend" value="Cómo se cubren los criterios de evaluación:&lt;br&gt;• &lt;b&gt;Escalabilidad&lt;/b&gt;: cola + workers horizontales, se escalan según profundidad de cola&lt;br&gt;• &lt;b&gt;Resiliencia y reintentos&lt;/b&gt;: circuit breaker + reconciliación contra la fuente real (nunca retry ciego) + DLQ&lt;br&gt;• &lt;b&gt;Control de concurrencia&lt;/b&gt;: idempotency key + índice único (polizaId + estado activo) en BD&lt;br&gt;• &lt;b&gt;Seguridad&lt;/b&gt;: JWT/OAuth en Zona Segura, red privada/mTLS hacia INARI, secretos en Vault&lt;br&gt;• &lt;b&gt;Costo&lt;/b&gt;: cola managed de capa gratuita, no se reescribe INARI/admwr — solo se le exige propagar el requestId&lt;br&gt;&lt;br&gt;Colores de flecha: negro = flujo principal · naranja = ambiguo/reconciliación · gris punteado = retorno/observabilidad · rojo = falla/alerta · morado = secretos" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#666666;fontSize=12;spacing=10;" vertex="1" parent="1b">
+          <mxGeometry x="350" y="1090" width="1290" height="170" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
