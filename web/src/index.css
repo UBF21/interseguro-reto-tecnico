@@ -1,0 +1,154 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/inter";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Tokens del design brief (docs/design-brief.md) -- HARD CONSTRAINT, no inventar otros colores. */
+:root {
+  --background: #f7f9fc;
+  --foreground: #1c2733;
+  --card: #ffffff;
+  --card-foreground: #1c2733;
+  --primary: #0b3d91;
+  --primary-foreground: #ffffff;
+  --accent: #00a99d;
+  --accent-foreground: #0b3d91;
+  --muted: #eef1f6;
+  --muted-foreground: #5b6472;
+  --border: #e2e8f0;
+  --destructive: #d64545;
+  --destructive-foreground: #ffffff;
+  --warning: #e8a33d;
+  --radius: 0.5rem;
+  --popover: #ffffff;
+  --popover-foreground: #1c2733;
+  --secondary: #eef1f6;
+  --secondary-foreground: #0b3d91;
+  --input: #e2e8f0;
+  --ring: #0b3d91;
+  --chart-1: #0b3d91;
+  --chart-2: #00a99d;
+  --chart-3: #5b6472;
+  --chart-4: #e8a33d;
+  --chart-5: #d64545;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1c2733;
+  --sidebar-primary: #0b3d91;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #eef1f6;
+  --sidebar-accent-foreground: #0b3d91;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #0b3d91;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --font-sans: 'Inter Variable', system-ui, sans-serif;
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+body {
+  margin: 0;
+}
+
+.dark {
+  --background: #131b26;
+  --foreground: #eef1f6;
+  --card: #1b2634;
+  --card-foreground: #eef1f6;
+  --popover: #1b2634;
+  --popover-foreground: #eef1f6;
+  --primary: #4d79c9;
+  --primary-foreground: #0b1220;
+  --secondary: #233042;
+  --secondary-foreground: #eef1f6;
+  --muted: #233042;
+  --muted-foreground: #93a1b5;
+  --accent: #2dd4c8;
+  --accent-foreground: #0b1220;
+  --destructive: #e57373;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.15);
+  --ring: #4d79c9;
+  --sidebar: #1b2634;
+  --sidebar-foreground: #eef1f6;
+  --sidebar-primary: #4d79c9;
+  --sidebar-primary-foreground: #0b1220;
+  --sidebar-accent: #233042;
+  --sidebar-accent-foreground: #eef1f6;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #4d79c9;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+
+  /* Scrollbar propio (delgado, tokens de marca) en vez del default del SO -- aplica al scroll
+     general y a cualquier panel con overflow, incluido el scroller interno de CodeMirror. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--border);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--muted-foreground);
+  }
+}
